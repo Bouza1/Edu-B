@@ -91,7 +91,7 @@ class highScoreBoard(ModalView):
 class CorrectGuess(ModalView):
 
     def resetGameSeq(self):
-        print("Hi My Name Is Josh")
+        print("Reset Button)
 
 class InCorrecrGuess(ModalView):
     pass
