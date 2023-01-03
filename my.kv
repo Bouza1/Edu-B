@@ -63,21 +63,49 @@
     name:"MainMenuScreen"
 
     BoxLayout:
-        orientation:'horizontal'
-        padding: 30
-        spacing:30
+        orientation:'vertical'
 
-        Button:
-            on_release:root.spellingBBtn()
-            size_hint:0.4,0.4
-            background_normal:'imgs/spellBBtnUp.png'
-            background_down:'imgs/spellBBtnDown.png'
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:1,0.1
 
-        Button
-            on_release:root.mathsBBtn()
-            size_hint:0.4,0.4
-            background_normal:'imgs/spellBBtnUp.png'
-            background_down:'imgs/spellBBtnDown.png'
+            Label:
+                text:''
+            Button:
+                text:'Highscores'
+                size_hint:0.3,1
+                on_release:root.highScoreButton()
+
+        BoxLayout:
+            orientation:'horizontal'
+            spacing:30
+            padding:30
+
+            Button:
+                on_release:root.spellingBBtn()
+                background_normal:'imgs/spellBBtnUp.png'
+                background_down:'imgs/spellBBtnDown.png'
+
+            Button
+                on_release:root.mathsBBtn()
+                background_normal:'imgs/spellBBtnUp.png'
+                background_down:'imgs/spellBBtnDown.png'
+
+
+        BoxLayout:
+            orientation:'horizontal'
+            spacing:30
+            padding:30
+
+            Button:
+                on_release:root.spellingBBtn()
+                background_normal:'imgs/spellBBtnUp.png'
+                background_down:'imgs/spellBBtnDown.png'
+
+            Button
+                on_release:root.mathsBBtn()
+                background_normal:'imgs/spellBBtnUp.png'
+                background_down:'imgs/spellBBtnDown.png'
     
 <SpellingBScreen>
     name:"SpellingBScreen"

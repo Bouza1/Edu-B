@@ -27,14 +27,17 @@ class LoadScreen(Screen):
 
 class MainMenuScreen(Screen):
 
-    def spellingBBtn(self):
-        print(user)
+    def highScoreButton(self):
         highScoreBoard().open()
 
+    def spellingBBtn(self):
+        sm.current = "SpellingBScreen"
+        print(user)
+
     def mathsBBtn(self):
-        # sm.current="MathsBScreen"
+        sm.current = "MathsBScreen"
         print("test")
-        CorrectGuess().open()
+
 
 
 class SpellingBScreen(Screen):
@@ -89,7 +92,7 @@ class highScoreBoard(ModalView):
 
 
 class CorrectGuess(ModalView):
-
+    # CorrectGuess().open()
     def resetGameSeq(self):
         print("Reset Button")
 
