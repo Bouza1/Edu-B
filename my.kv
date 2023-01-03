@@ -1,0 +1,202 @@
+<WindowManager>
+    LoadScreen:
+    MainMenuScreen:
+    SpellingBScreen:
+    MathsBScreen:
+
+<LoadScreen>
+    name:"loadScreen"
+    userName:userName
+    userAge:userAge
+
+    BoxLayout:
+        orientation:'vertical'
+        padding:20
+        spacing:20
+
+        Image:
+            source:"imgs/loadPageTitleBar.png"
+            size_hint: 1, 0.5
+            
+        TextInput:
+            id:userName
+            size_hint: 0.6, 0.2
+            pos_hint:{"x": 0.2}
+            halign:"center"
+            font_size:45
+            hint_text:"Name:"
+            background_normal:""
+            background_color:"#EE977F"
+            color:"#ACCFBF"
+            hint_text_color:"#f4d24a"
+            
+        TextInput:
+            id:userAge
+            size_hint: 0.6, 0.2
+            pos_hint:{"x": 0.2}
+            font_size:45
+            halign:"center"
+            hint_text:"Age:"
+            hint_text_color:"#f4d24a"
+            background_normal:""
+            background_color:"#EE977F"
+
+
+        Button:
+            size_hint:0.3,0.6
+            background_normal:"imgs/playBtnUp.png"
+            background_down:"imgs/playBtnDown.png"
+            on_release:root.playBtn()
+            pos_hint:{"x":0.35}
+
+        BoxLayout:
+            orientation:'horizontal'
+            spacing:10
+            size_hint:1, 0.3
+
+            Label:
+                text:""
+                size_hint:0.4,1
+
+
+<MainMenuScreen>
+    name:"MainMenuScreen"
+
+    BoxLayout:
+        orientation:'horizontal'
+        padding: 30
+        spacing:30
+
+        Button:
+            on_release:root.spellingBBtn()
+            size_hint:0.4,0.4
+            background_normal:'imgs/spellBBtnUp.png'
+            background_down:'imgs/spellBBtnDown.png'
+
+        Button
+            on_release:root.mathsBBtn()
+            size_hint:0.4,0.4
+            background_normal:'imgs/spellBBtnUp.png'
+            background_down:'imgs/spellBBtnDown.png'
+    
+<SpellingBScreen>
+    name:"SpellingBScreen"
+
+    Label:
+        text:"Spelling B!"
+        color:"#EE977F"
+
+<MathsBScreen>
+    name:"MathsBScreen"
+
+    Label
+        text:"Maths B!"
+        color:"#EE977F"
+
+<highScoreBoard>
+
+    size_hint: 0.5, 0.5
+    overlay_color:[1,1,1,0.8]
+    background:"imgs/chalkboard.png"
+    on_open:root.highScoreBoardOpenSeq()
+
+    BoxLayout:
+        orientation:'vertical'
+        
+        Label:
+            text:""
+            color:"#FFFFFF"
+            font_size:48
+            size_hint:1,0.1
+
+        Label:
+            text:"High Scores!"
+            color:"#EE977F"
+            font_size:48
+            size_hint:1,0.3
+
+
+        BoxLayout:
+            orientation:'horizontal'
+
+            BoxLayout:
+                orientation:'vertical'
+
+                Label:
+                    id:highname1
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highname2
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highname3
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highname4
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highname5
+                    text:""
+                    font_size:30
+
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    id:highscore1
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highscore2
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highscore3
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highscore4
+                    text:""
+                    font_size:30
+
+                Label:
+                    id:highscore5
+                    text:""
+                    font_size:30
+
+        Label:
+            text:""
+            color:"#FFFFFF"
+            font_size:48
+            size_hint:1,0.3
+
+<CorrectGuess>
+    size_hint: 1, 0.4
+    pos_hint:{"y":0/8}
+    overlay_color:[0,0,0,0.8]
+    background:"imgs/correct.png"
+    on_dismiss:root.resetGameSeq()
+
+    Label:
+        text:"Correct"
+
+<InCorrectGuess>
+    size_hint: 1, 0.4
+    pos_hint:{"y":0/8}
+    overlay_color:[0,0,0,0.8]
+    background:"imgs/incorrect.png"
+    on_dismiss:root.resetGameSeq()
+
+    Label:
+        text:"Correct"
+
