@@ -1,3 +1,5 @@
+from random import randint
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -11,6 +13,10 @@ Window.clearcolor = "#ffffff"
 Window.size = (700, 700)
 
 global user
+global score
+score = 0
+global streak
+streak = 0
 
 class LoadScreen(Screen):
     userName = ObjectProperty(None)
@@ -34,20 +40,48 @@ class MainMenuScreen(Screen):
         sm.current = "SpellingBScreen"
         print(user)
 
-    def mathsBBtn(self):
-        sm.current = "MathsBScreen"
+    def countingBBtn(self):
+        sm.current = "CountingBScreen"
         print("test")
-
 
 
 class SpellingBScreen(Screen):
     pass
 
 
-class MathsBScreen(Screen):
-    pass
+class CountingBScreen(Screen):
+    guess = ObjectProperty(None)
+    global firstTime
+    firstTime = 0
 
+    def menuBtn(self):
+        sm.current = "MainMenuScreen"
 
+    def playCount(self):
+        global correctNumber
+        global firstTime
+        if firstTime == 0:
+            print("First Time")
+            firstTime = firstTime + 1
+            correctNumber = randint(1, 9)
+            self.ids.countImgLbl.source = "imgs/countImgs/" + str(correctNumber) + ".png"
+        else:
+            playersGuess = int(self.guess.text)
+            if playersGuess == correctNumber:
+                global score
+                global streak
+                streak = streak + 1
+                score = score + (100 * streak)
+                print(playersGuess, " is eqaul too", correctNumber)
+                self.guess.text = ""
+                correctNumber = randint(1, 9)
+                self.ids.countImgLbl.source = self.ids.countImgLbl.source = "imgs/countImgs/" + str(correctNumber) + ".png"
+                print(correctNumber)
+                print("Score:", score)
+                CorrectGuess().open()
+            else:
+                print("Incorrect Guess")
+                streak = 0
 class highScoreBoard(ModalView):
     def highScoreBoardOpenSeq(self):
         global highScores
@@ -109,7 +143,7 @@ sm = WindowManager()
 sm.add_widget(LoadScreen(name='LoadScreen'))
 sm.add_widget(MainMenuScreen(name='MainMenuScreen'))
 sm.add_widget(SpellingBScreen(name='SpellingBScreen'))
-sm.add_widget(MathsBScreen(name='MathsBScreen'))
+sm.add_widget(CountingBScreen(name='CountingBScreen'))
 
 
 class MyMainApp(App):

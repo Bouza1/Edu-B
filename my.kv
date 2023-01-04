@@ -2,7 +2,7 @@
     LoadScreen:
     MainMenuScreen:
     SpellingBScreen:
-    MathsBScreen:
+    CountingBScreen:
 
 <LoadScreen>
     name:"loadScreen"
@@ -83,12 +83,12 @@
 
             Button:
                 on_release:root.spellingBBtn()
-                background_normal:'imgs/spellBBtnUp.png'
+                background_normal:'imgs/spellingB2Btn.png'
                 background_down:'imgs/spellBBtnDown.png'
 
             Button
-                on_release:root.mathsBBtn()
-                background_normal:'imgs/spellBBtnUp.png'
+                on_release:root.countingBBtn()
+                background_normal:'imgs/countingB.png'
                 background_down:'imgs/spellBBtnDown.png'
 
 
@@ -99,11 +99,11 @@
 
             Button:
                 on_release:root.spellingBBtn()
-                background_normal:'imgs/spellBBtnUp.png'
+                background_normal:'imgs/mathsBBtn.png'
                 background_down:'imgs/spellBBtnDown.png'
 
             Button
-                on_release:root.mathsBBtn()
+                on_release:root.countingBBtn()
                 background_normal:'imgs/spellBBtnUp.png'
                 background_down:'imgs/spellBBtnDown.png'
     
@@ -114,13 +114,60 @@
         text:"Spelling B!"
         color:"#EE977F"
 
-<MathsBScreen>
-    name:"MathsBScreen"
+<CountingBScreen>
+    name:"CountingBScreen"
+    guess:guess
 
-    Label
-        text:"Maths B!"
-        color:"#EE977F"
+    BoxLayout:
+        orientation:'vertical'
 
+        BoxLayout:
+            orientation:'horizontal'
+            size_hint:1,0.1
+            padding:10
+
+            Label:
+                text:"Counting B!"
+                color:"#EE977F"
+
+            Button:
+                text:"Menu"
+                on_press:root.menuBtn()
+                size_hint:0.3,1
+        BoxLayout:
+            orientation:'vertical'
+            padding:10
+            size_hint:0.6,1
+
+            Image:
+                id:countImgLbl
+                source: 'imgs/countImgs/0.png'
+                pos_hint:{"x":0.35}
+
+        BoxLayout:
+            orientation:'vertical'
+            size_hint: 1,0.2
+            TextInput:
+                id:guess
+                size_hint: 0.6, 0.2
+                pos_hint:{"x": 0.2}
+                font_size:45
+                halign:"center"
+                hint_text:"Count The Items:"
+                hint_text_color:"#f4d24a"
+                background_normal:""
+                background_color:"#EE977F"
+        BoxLayout:
+            orientation:'vertical'
+            padding:10
+            size_hint:1,0.2
+            Button:
+                size_hint:0.3,0.6
+                text:'Play'
+                pos_hint:{"x":0.35}
+                background_normal:""
+                background_color:"#EE977F"
+                on_press:root.playCount()
 <highScoreBoard>
 
     size_hint: 0.5, 0.5
